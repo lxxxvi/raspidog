@@ -40,11 +40,17 @@ io.on('connection', function(socket){
       // console.log(cpu_idle,memory_available,memory_total,memory_shared,memory_buffer,memory_cached);
       var memory_free = memory_available + memory_shared + memory_buffer + memory_cached; // 922256
       // console.log("free", memory_free);
-      var memory_used = ( (memory_total - memory_free ) * 100 ) / memory_total;
+      var memory_used = (memory_total - memory_free ) ;
 
       var response = {
-        cpu: 100 - cpu_idle,
-        memory: Math.round(memory_used)
+        "cpu": { 
+          "used_percent": (100 - cpu_idle)
+        },
+        "memory": {
+          "used_percent": Math.round(( memory_used * 100 ) / memory_total),
+          "used"        : memory_used,
+          "total"       : memory_total
+       }
       };
 
       io.emit('workload', response);

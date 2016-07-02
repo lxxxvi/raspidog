@@ -4,13 +4,21 @@
 }
 
 .cpu::before {
-  content: 'CPU Used ';
+  content: 'CPU ';
 }
 
 .memory::before {
-  content: 'Memory Used ';
+  content: 'Memory ';
 }
 
-.cpu::after, .memory::after {
-   content: '%';
-};
+.cpu .used_percent::after, .memory .used_percent::after {
+  content: '%';
+}
+
+.memory .used_kb::after {
+  content: 'KB used';
+}
+
+.memory .total_kb::after {
+  content: 'KB total';
+}

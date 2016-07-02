@@ -11,8 +11,14 @@
     <div id="node_192-168-17-15">
       <h2>Workload 192.168.15.17</h2>
       <div class="workload">
-        <div class="cpu"></div>
-        <div class="memory"></div>
+        <div class="cpu">
+          <div class="used_percent"></div>
+        </div>
+        <div class="memory">
+          <div class="used_percent"></div>
+          <div class="used_kb"></div>
+          <div class="total_kb"></div>
+        </div>
       </div>
     </div>
 
@@ -26,8 +32,10 @@
       socket.on('workload', function(response) {
 
         // console.log("response", response);
-        $("#node_192-168-17-15 .workload .cpu").html(response.cpu);
-        $("#node_192-168-17-15 .workload .memory").html(response.memory);
+        $("#node_192-168-17-15 .workload .cpu .used_percent").html(response.cpu.used_percent);
+        $("#node_192-168-17-15 .workload .memory .used_percent").html(response.memory.used_percent);
+        $("#node_192-168-17-15 .workload .memory .used_kb").html(response.memory.used);
+        $("#node_192-168-17-15 .workload .memory .total_kb").html(response.memory.total);
       });
 
     </script>
