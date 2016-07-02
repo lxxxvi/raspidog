@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cpu::before {
+  content: 'CPU Used ';
+}
+
+.memory::before {
+  content: 'Memory Used ';
+}
+
+.cpu::after, .memory::after {
+   content: '%';
+};

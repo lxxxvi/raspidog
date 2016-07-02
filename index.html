@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Raspifarm Dog</title>
+    <link rel="stylesheet" href="stylesheet" type="text/css"></link
+  </head>
+  <body>
+    <div id="node_192-168-17-15">
+      <h2>Workload 192.168.15.17</h2>
+      <div class="workload">
+        <div class="cpu"></div>
+        <div class="memory"></div>
+      </div>
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery"></script>
+
+    <script>
+      var socket = io();
+
+      socket.on('workload', function(response) {
+
+        // console.log("response", response);
+        $("#node_192-168-17-15 .workload .cpu").html(response.cpu);
+        $("#node_192-168-17-15 .workload .memory").html(response.memory);
+      });
+
+    </script>
+  </body>
+
+
+</html>
